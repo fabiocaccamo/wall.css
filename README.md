@@ -40,7 +40,7 @@ If you aren't using `sass`, just include `wall.css` in your html
 ```
 
 #### Responsive
-`wall.css` is responsive and **mobile-first**. 
+`wall.css` is responsive and **mobile-first**.
 
 For each modifier described below, it is possible to set a different value for each breakpoint, just prefixing it with the breakpoint, for example:
 
@@ -61,14 +61,14 @@ Set the number of columns to display, values are from `1` to `24`
 ##### `.wall--ratio-{n-n}`
 Set the aspect-ratio of the items, values are: `1-1`, `2-1`, `1-2`, `3-2`, `2-3`, `4-3`, `3-4`, `16-9`
 
-##### `.wall--round-{n}`
+##### `.wall--rounded-{n}`
 Set the border-radius of the items, values are: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `15`, `20`, `30`
 
-##### `.wall--round`
+##### `.wall--rounded`
 Set the border-radius of the items to `100%`, it can be used together with `.wall--ratio-1-1` to make circle items.
 
 ##### `.wall--spacing-{n}`
-Set the spacing between the items, values are: `0`, `1`, `2`, `3`, `4`, `5`, `10`, `15`, `20`, `25`, `30`, `40`, `50`, `60` 
+Set the spacing between the items, values are: `0`, `1`, `2`, `3`, `4`, `5`, `10`, `15`, `20`, `25`, `30`, `40`, `50`, `60`
 
 ### SASS
 
@@ -81,7 +81,7 @@ Set the spacing between the items, values are: `0`, `1`, `2`, `3`, `4`, `5`, `10
 ```scss
 $wall-columns: 24 !default;
 $wall-ratio: ((1, 1), (2, 1), (1, 2), (3, 2), (2, 3), (4, 3), (3, 4), (16, 9)) !default;
-$wall-round: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 30 !default;
+$wall-rounded: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 30 !default;
 $wall-spacing: 0, 1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50, 60 !default;
 $wall-breakpoints: (
     xs: 0,
@@ -91,7 +91,7 @@ $wall-breakpoints: (
     xl: 1200px
 ) !default;
 ```
-        
+
 ---
 
 ## License
