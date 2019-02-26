@@ -9,7 +9,7 @@ Pure (s)css **block-grid** implementation with extra features.
 ### HTML
 ```html
 <div class="wall-container">
-    <div class="wall wall--cols-5 wall--ratio-3-2 wall--round-5 wall--spacing-5">
+    <div class="wall wall--cols-5 wall--ratio-3-2 wall--rounded-5 wall--spacing-5">
         <div class="wall-col">
             <div class="wall-item">
                 <!-- .wall-item-content class will make element 100% width/height of .wall-item -->
