@@ -24,6 +24,7 @@
 
         & > .wall-col {
             display: inline-block;
+            width: 100%;
 
             & > .wall-item {
                 display: block;
@@ -93,20 +94,16 @@
         @mixin _wall-rounded($breakpoint-prefix:"") {
             @each $i in $wall-rounded {
                 &--#{$breakpoint-prefix}rounded-#{$i} {
-                    & > .wall-col > .wall-item {
+                    & > .wall-col > .wall-item,
+                    & > .wall-col > .wall-item .wall-item-content {
                         border-radius: #{$i}px;
-                        .wall-item-content {
-                            border-radius: #{$i}px;
-                        }
                     }
                 }
             }
             &--#{$breakpoint-prefix}rounded {
-                & > .wall-col > .wall-item {
+                & > .wall-col > .wall-item,
+                & > .wall-col > .wall-item .wall-item-content {
                     border-radius: 100%;
-                    .wall-item-content {
-                        border-radius: 100%;
-                    }
                 }
             }
         }
