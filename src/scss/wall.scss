@@ -44,6 +44,7 @@
                     display: block;
                     width: 100%;
                     height: calc(100% + 1px);
+                    overflow: hidden;
                     position: absolute;
                     top: 0;
                     left: 0;
@@ -99,12 +100,18 @@
                 &--#{$breakpoint-prefix}rounded-#{$i} {
                     & > .wall-col > .wall-item {
                         border-radius: #{$i}px;
+                        .wall-item-content {
+                            border-radius: #{$i}px;
+                        }
                     }
                 }
             }
             &--#{$breakpoint-prefix}rounded {
                 & > .wall-col > .wall-item {
                     border-radius: 100%;
+                    .wall-item-content {
+                        border-radius: 100%;
+                    }
                 }
             }
         }
