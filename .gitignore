@@ -4,3 +4,8 @@ npm-debug.log
 bower_components
 *.swp
 package-lock.json
+dist/css/wall-demo.css
+dist/demo/index.html
+src/layouts/default.html
+src/pages/demo/index.html
+src/scss/wall-demo.scss
