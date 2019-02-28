@@ -1,10 +1,53 @@
 # wall.css
-Pure (s)css **block-grid** implementation with extra features.
+Pure (s)css **block-grid** implementation with extra features. [DEMO](https://fabiocaccamo.com/projects/wall.css/demo/) :zap:
 
 ## Installation
 `npm install @fabiocaccamo/wall.css`
 
+## Features:
+#### Framework-agnostic
+`wall.css` is not based on `Bootstrap`, `Foundation` or any existing framework.
+#### Highly customizable using class modifiers
+All modifiers described below are available for the `.wall` class:
+
+- `.wall--cols-{n}`
+
+Set the number of columns to display, values are from `1` to `24`, default `1`.
+
+- `.wall--ratio-{n-n}` 
+
+Set the aspect-ratio of the items, values are: `1-1`, `2-1`, `1-2`, `3-2`, `2-3`, `4-3`, `3-4`, `16-9`, default `1-1`.
+
+- `.wall--rounded-{n}`
+
+Set the border-radius of the items, values are: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `15`, `20`, `30`, default `0`.
+
+- `.wall--rounded`
+
+Set the border-radius of the items to `100%`, it can be used together with `.wall--ratio-1-1` to make circle items.
+
+- `.wall--spacing-{n}`
+
+Set the spacing between the items, values are: `0`, `1`, `2`, `3`, `4`, `5`, `10`, `15`, `20`, `25`, `30`, `40`, `50`, `60`, default `0`.
+
+#### Responsive / Mobile-first
+For each modifier described above, it is possible to set a different value for each breakpoint, just prefixing it with the breakpoint, for example:
+
+```html
+<div class="wall wall--cols-2 wall--sm-cols-3 wall--md-cols-4 wall--lg-cols-5 wall--xl-cols-6">
+    <!-- ... -->
+</div>
+```
+
+Supported breakpoints are: `xs` *(can be omitted, it's implicit)*, `sm`, `md`, `lg`, `xl`.
+
 ## Usage
+
+### CSS
+If you aren't using `sass`, just include `wall.css` in your html
+```html
+<link href="css/wall.css" rel="stylesheet" />
+```
 
 ### HTML
 ```html
@@ -31,44 +74,12 @@ Pure (s)css **block-grid** implementation with extra features.
 </div>
 ```
 
-### CSS
 
-#### Import
-If you aren't using `sass`, just include `wall.css` in your html
-```html
-<link href="css/wall.css" rel="stylesheet" />
-```
 
-#### Responsive
-`wall.css` is responsive and **mobile-first**.
 
-For each modifier described below, it is possible to set a different value for each breakpoint, just prefixing it with the breakpoint, for example:
 
-```html
-<div class="wall wall--cols-2 wall--sm-cols-3 wall--md-cols-4 wall--lg-cols-5 wall--xl-cols-6">
-    <!-- ... -->
-</div>
-```
 
-Supported breakpoints are: `xs` *(can be omitted, it's implicit)*, `sm`, `md`, `lg`, `xl`.
 
-#### Modifiers
-All modifiers described below are available for the `.wall` class:
-
-##### `.wall--cols-{n}`
-Set the number of columns to display, values are from `1` to `24`
-
-##### `.wall--ratio-{n-n}`
-Set the aspect-ratio of the items, values are: `1-1`, `2-1`, `1-2`, `3-2`, `2-3`, `4-3`, `3-4`, `16-9`
-
-##### `.wall--rounded-{n}`
-Set the border-radius of the items, values are: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `15`, `20`, `30`
-
-##### `.wall--rounded`
-Set the border-radius of the items to `100%`, it can be used together with `.wall--ratio-1-1` to make circle items.
-
-##### `.wall--spacing-{n}`
-Set the spacing between the items, values are: `0`, `1`, `2`, `3`, `4`, `5`, `10`, `15`, `20`, `25`, `30`, `40`, `50`, `60`
 
 ### SASS
 
