@@ -23,8 +23,11 @@
         list-style: none;
 
         & > .wall-col {
-            display: inline-block;
             width: 100%;
+            height: auto;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: top;
 
             & > .wall-item {
                 display: block;
@@ -55,6 +58,15 @@
                 a.wall-item-content {
                     cursor: pointer;
                 }
+            }
+
+            & > .wall-text {
+                display: block;
+                font-size: 1rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin: 0;
+                padding: 0;
             }
         }
 

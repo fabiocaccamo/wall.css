@@ -14,7 +14,7 @@ All modifiers described below are available for the `.wall` class:
 
 Set the number of columns to display, values are from `1` to `24`, default `1`.
 
-- `.wall--ratio-{n-n}` 
+- `.wall--ratio-{n-n}`
 
 Set the aspect-ratio of the items, values are: `1-1`, `2-1`, `1-2`, `3-2`, `2-3`, `4-3`, `3-4`, `16-9`, default `1-1`.
 
@@ -73,13 +73,6 @@ If you aren't using `sass`, just include `wall.css` in your html
     </div>
 </div>
 ```
-
-
-
-
-
-
-
 
 ### SASS
 
