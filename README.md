@@ -16,7 +16,7 @@ Set the number of columns to display, values are from `1` to `24`, default `1`.
 
 - `.wall--ratio-{n-n}`
 
-Set the aspect-ratio of the items, values are: `1-1`, `2-1`, `1-2`, `3-2`, `2-3`, `4-3`, `3-4`, `16-9`, default `1-1`.
+Set the aspect-ratio of the items, values are: `1-1`, `2-1`, `1-2`, `3-1`, `1-3`, `3-2`, `2-3`, `4-3`, `3-4`, `16-9`, default `1-1`.
 
 - `.wall--rounded-{n}`
 
@@ -55,9 +55,8 @@ If you aren't using `sass`, just include `wall.css` in your html
     <div class="wall wall--cols-5 wall--ratio-3-2 wall--rounded-5 wall--spacing-5">
         <div class="wall-col">
             <div class="wall-item">
-                <!-- .wall-item-content class will make element 100% width/height of .wall-item -->
                 <a class="wall-item-content" href="#">
-                    <span class="wall-item-content"></span>
+                    <img src="https://via.placeholder.com/500x500" />
                 </a>
             </div>
         </div>
@@ -67,9 +66,7 @@ If you aren't using `sass`, just include `wall.css` in your html
         <div class="wall-col">
             <!-- ... -->
         </div>
-        <div class="wall-col">
-            <!-- ... -->
-        </div>
+        <!-- ... -->
     </div>
 </div>
 ```
@@ -84,7 +81,7 @@ If you aren't using `sass`, just include `wall.css` in your html
 #### Variables
 ```scss
 $wall-columns: 24 !default;
-$wall-ratio: ((1, 1), (2, 1), (1, 2), (3, 2), (2, 3), (4, 3), (3, 4), (16, 9)) !default;
+$wall-ratio: ((1, 1), (2, 1), (1, 2), (3, 1), (1, 3), (3, 2), (2, 3), (4, 3), (3, 4), (16, 9)) !default;
 $wall-rounded: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 30 !default;
 $wall-spacing: 0, 1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50, 60 !default;
 $wall-breakpoints: (
@@ -96,6 +93,14 @@ $wall-breakpoints: (
 ) !default;
 ```
 
+#### Mixins
+```scss
+# set proportional width/height (fixed aspect ratio, eg. 1:1, 3:2, 4:3, ...)
+@include aspect-ratio-container($width:1, $height:1); # default is 1:1 (square)
+
+# fill 100% width and height of the parent "aspect-ratio-container"
+@include aspect-ratio-content();
+```
 ---
 
 ## License
