@@ -95,10 +95,10 @@ $wall-breakpoints: (
 
 #### Mixins
 ```scss
-# set proportional width/height (fixed aspect ratio, eg. 1:1, 3:2, 4:3, ...)
+/* set proportional width/height (fixed aspect ratio, eg. 1:1, 3:2, 4:3, ...) */
 @include aspect-ratio-container($width:1, $height:1); # default is 1:1 (square)
 
-# fill 100% width and height of the parent "aspect-ratio-container"
+/* fill 100% width and height of the parent "aspect-ratio-container" */
 @include aspect-ratio-content();
 ```
 ---
