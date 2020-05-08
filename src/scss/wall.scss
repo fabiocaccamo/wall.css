@@ -131,7 +131,6 @@ $wall-breakpoints: (
                 font-size: 1rem;
 
                 & > .wall-item-content {
-                    background-color: inherit;
                     @include aspect-ratio-content();
                 }
             }
