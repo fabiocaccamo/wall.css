@@ -117,19 +117,19 @@ $wall-breakpoints: (
     width: 100%;
 
     & > .wall {
-        font-size: 0;
         display: block;
         overflow: hidden;
         list-style: none;
+        font-size: 0;
 
         & > .wall-col {
             display: inline-block;
+            vertical-align: top;
             width: 100%;
+            font-size: 1rem;
 
             & > .wall-item {
                 @include aspect-ratio-container();
-                font-size: 1rem;
-
                 & > .wall-item-content {
                     @include aspect-ratio-content();
                 }
