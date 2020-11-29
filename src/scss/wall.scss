@@ -149,7 +149,7 @@ $wall-breakpoints: (
             vertical-align: top;
             width: 100%;
             font-size: 1rem;
-
+            overflow: hidden;
             & > .wall-item {
                 @include aspect-ratio-container();
                 & > .wall-item-content {
