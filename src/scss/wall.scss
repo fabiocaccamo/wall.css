@@ -85,6 +85,28 @@ $wall-breakpoints: (
     }
 }
 
+@mixin _wall-hspacing($breakpoint-prefix:"") {
+    @each $i in $wall-spacing {
+        &--#{$breakpoint-prefix}hspacing-#{$i} {
+            margin-left: #{-$i}px;
+            & > .wall-col {
+                padding-left: #{$i}px;
+            }
+        }
+    }
+}
+
+@mixin _wall-vspacing($breakpoint-prefix:"") {
+    @each $i in $wall-spacing {
+        &--#{$breakpoint-prefix}vspacing-#{$i} {
+            margin-top: #{-$i}px;
+            & > .wall-col {
+                padding-top: #{$i}px;
+            }
+        }
+    }
+}
+
 @mixin _wall-spacing($breakpoint-prefix:"") {
     @each $i in $wall-spacing {
         &--#{$breakpoint-prefix}spacing-#{$i} {
@@ -139,6 +161,8 @@ $wall-breakpoints: (
         @include _wall-columns();
         @include _wall-ratio();
         @include _wall-rounded();
+        @include _wall-hspacing();
+        @include _wall-vspacing();
         @include _wall-spacing();
 
         @each $breakpoint, $breakpoint-min-width in $wall-breakpoints {
@@ -147,6 +171,8 @@ $wall-breakpoints: (
                 @include _wall-columns($breakpoint-prefix);
                 @include _wall-ratio($breakpoint-prefix);
                 @include _wall-rounded($breakpoint-prefix);
+                @include _wall-hspacing($breakpoint-prefix);
+                @include _wall-vspacing($breakpoint-prefix);
                 @include _wall-spacing($breakpoint-prefix);
             }
         }
