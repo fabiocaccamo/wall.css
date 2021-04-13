@@ -1,6 +1,6 @@
 {
   "name": "@fabiocaccamo/wall.css",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Pure (s)css block-grid implementation with extra features.",
   "keywords": [
     "html",

@@ -121,30 +121,33 @@ $wall-breakpoints: (
 }
 
 @mixin _wall-direction($breakpoint-prefix:"") {
-    @each $i in $wall-spacing {
-        &--#{$breakpoint-prefix}horizontal {
-            white-space: nowrap;
-            overflow-x: auto;
-            overflow-y: hidden;
-            & > .wall {
-                overflow: initial;
-                & > .wall-col {
-                    white-space: initial;
-                }
+    &--#{$breakpoint-prefix}horizontal {
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        & > .wall {
+            overflow: initial;
+            & > .wall-col {
+                white-space: initial;
+            }
+        }
+        @each $i in $wall-spacing {
+            & > .wall--#{$breakpoint-prefix}spacing-#{$i},
+            & > .wall--#{$breakpoint-prefix}vspacing-#{$i} {
                 margin-bottom: #{$i}px;
             }
         }
-        &--#{$breakpoint-prefix}vertical {
-            white-space: initial;
-            overflow-x: hidden;
-            overflow-y: auto;
-            & > .wall {
-                overflow: hidden;
-                & > .wall-col {
-                    white-space: initial;
-                }
-                margin-bottom: 0;
+    }
+    &--#{$breakpoint-prefix}vertical {
+        white-space: initial;
+        overflow-x: hidden;
+        overflow-y: auto;
+        & > .wall {
+            overflow: hidden;
+            & > .wall-col {
+                white-space: initial;
             }
+            margin-bottom: 0;
         }
     }
 }
