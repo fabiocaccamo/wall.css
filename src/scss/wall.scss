@@ -49,7 +49,7 @@ $wall-breakpoints: (
 
 @mixin _wall-columns($breakpoint-prefix:"") {
     @for $i from 1 through $wall-columns {
-        &--#{$breakpoint-prefix}cols-#{$i} {
+        & > .wall--#{$breakpoint-prefix}cols-#{$i} {
             & > .wall-col {
                 width: (100% / $i);
             }
@@ -59,7 +59,7 @@ $wall-breakpoints: (
 
 @mixin _wall-ratio($breakpoint-prefix:"") {
     @each $i in $wall-ratio {
-        &--#{$breakpoint-prefix}ratio-#{nth($i, 1)}-#{nth($i, 2)} {
+        & > .wall--#{$breakpoint-prefix}ratio-#{nth($i, 1)}-#{nth($i, 2)} {
             & > .wall-col > .wall-item {
                 $ratio-amount: (nth($i, 2) / nth($i, 1));
                 padding-top: percentage($ratio-amount);
@@ -70,14 +70,14 @@ $wall-breakpoints: (
 
 @mixin _wall-rounded($breakpoint-prefix:"") {
     @each $i in $wall-rounded {
-        &--#{$breakpoint-prefix}rounded-#{$i} {
+        & > .wall--#{$breakpoint-prefix}rounded-#{$i} {
             & > .wall-col > .wall-item,
             & > .wall-col > .wall-item > .wall-item-content {
                 border-radius: #{$i}px;
             }
         }
     }
-    &--#{$breakpoint-prefix}rounded {
+    & > .wall--#{$breakpoint-prefix}rounded {
         & > .wall-col > .wall-item,
         & > .wall-col > .wall-item > .wall-item-content {
             border-radius: 100%;
@@ -87,7 +87,7 @@ $wall-breakpoints: (
 
 @mixin _wall-hspacing($breakpoint-prefix:"") {
     @each $i in $wall-spacing {
-        &--#{$breakpoint-prefix}hspacing-#{$i} {
+        & > .wall--#{$breakpoint-prefix}hspacing-#{$i} {
             margin-left: #{-$i}px;
             & > .wall-col {
                 padding-left: #{$i}px;
@@ -98,7 +98,7 @@ $wall-breakpoints: (
 
 @mixin _wall-vspacing($breakpoint-prefix:"") {
     @each $i in $wall-spacing {
-        &--#{$breakpoint-prefix}vspacing-#{$i} {
+        & > .wall--#{$breakpoint-prefix}vspacing-#{$i} {
             margin-top: #{-$i}px;
             & > .wall-col {
                 padding-top: #{$i}px;
@@ -109,12 +109,41 @@ $wall-breakpoints: (
 
 @mixin _wall-spacing($breakpoint-prefix:"") {
     @each $i in $wall-spacing {
-        &--#{$breakpoint-prefix}spacing-#{$i} {
+        & > .wall--#{$breakpoint-prefix}spacing-#{$i} {
             margin-top: #{-$i}px;
             margin-left: #{-$i}px;
             & > .wall-col {
                 padding-top: #{$i}px;
                 padding-left: #{$i}px;
+            }
+        }
+    }
+}
+
+@mixin _wall-direction($breakpoint-prefix:"") {
+    @each $i in $wall-spacing {
+        &--#{$breakpoint-prefix}horizontal {
+            white-space: nowrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            & > .wall {
+                overflow: initial;
+                & > .wall-col {
+                    white-space: initial;
+                }
+                margin-bottom: #{$i}px;
+            }
+        }
+        &--#{$breakpoint-prefix}vertical {
+            white-space: initial;
+            overflow-x: hidden;
+            overflow-y: auto;
+            & > .wall {
+                overflow: hidden;
+                & > .wall-col {
+                    white-space: initial;
+                }
+                margin-bottom: 0;
             }
         }
     }
@@ -157,24 +186,26 @@ $wall-breakpoints: (
                 }
             }
         }
+    }
 
-        @include _wall-columns();
-        @include _wall-ratio();
-        @include _wall-rounded();
-        @include _wall-hspacing();
-        @include _wall-vspacing();
-        @include _wall-spacing();
+    @include _wall-columns();
+    @include _wall-ratio();
+    @include _wall-rounded();
+    @include _wall-hspacing();
+    @include _wall-vspacing();
+    @include _wall-spacing();
+    @include _wall-direction();
 
-        @each $breakpoint, $breakpoint-min-width in $wall-breakpoints {
-            @media screen and (min-width: $breakpoint-min-width) {
-                $breakpoint-prefix: #{$breakpoint}-;
-                @include _wall-columns($breakpoint-prefix);
-                @include _wall-ratio($breakpoint-prefix);
-                @include _wall-rounded($breakpoint-prefix);
-                @include _wall-hspacing($breakpoint-prefix);
-                @include _wall-vspacing($breakpoint-prefix);
-                @include _wall-spacing($breakpoint-prefix);
-            }
+    @each $breakpoint, $breakpoint-min-width in $wall-breakpoints {
+        @media screen and (min-width: $breakpoint-min-width) {
+            $breakpoint-prefix: #{$breakpoint}-;
+            @include _wall-columns($breakpoint-prefix);
+            @include _wall-ratio($breakpoint-prefix);
+            @include _wall-rounded($breakpoint-prefix);
+            @include _wall-hspacing($breakpoint-prefix);
+            @include _wall-vspacing($breakpoint-prefix);
+            @include _wall-spacing($breakpoint-prefix);
+            @include _wall-direction($breakpoint-prefix);
         }
     }
 }
