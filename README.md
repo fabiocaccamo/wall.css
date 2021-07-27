@@ -56,7 +56,7 @@ Pure (s)css **block-grid** implementation with extra features. 🧱
 
 Set the wall direction to horizontal, if the number of columns exceeds the values set, horizontal scroll will be used.
 
-- `.wall-container` `.wall-container``.wall-container--{breakpoint}-vertical`
+- `.wall-container` `.wall-container--{breakpoint}-vertical`
 
 Set the wall direction to vertical (default behavior).
 
