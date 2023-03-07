@@ -8,16 +8,19 @@ import rimraf   from 'rimraf';
 import yargs    from 'yargs';
 
 const $ = plugins();
+const sass = require('gulp-sass')(require('sass'));
 const ARGS = yargs.argv;
 const PRODUCTION = !!(ARGS.production);
 const PATH_DIST = 'dist'
 
-gulp.task('watch', gulp.series(clean, gulp.parallel(pages, sass), server, watch));
-gulp.task('build', gulp.series(clean, gulp.parallel(pages, sass)));
+gulp.task('watch', gulp.series(clean, gulp.parallel(pages, scss), server, watch));
+gulp.task('build', gulp.series(clean, gulp.parallel(pages, scss)));
 gulp.task('default', gulp.series('watch'));
 
 function clean(done) {
-    rimraf(PATH_DIST, done);
+    rimraf(PATH_DIST, {}).then(function() {
+        done();
+    });
 }
 
 function pages() {
@@ -37,15 +40,11 @@ function resetPages(done) {
     done();
 }
 
-function sass() {
+function scss() {
     return gulp.src('src/scss/*.scss')
         .pipe($.if(!PRODUCTION, $.sourcemaps.init()))
-        .pipe($.sass({
-            includePaths: [
-                'node_modules/@fabiocaccamo/layers.css/src/scss/'
-            ]
-        }).on('error', $.sass.logError))
-        .pipe($.autoprefixer({ browsers: ['last 2 versions', 'ie >= 9', 'ios >= 7'] }))
+        .pipe(sass({}).on('error', sass.logError))
+        .pipe($.autoprefixer())
         .pipe($.if(PRODUCTION, $.cleanCss({ compatibility: 'ie9' })))
         .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
         .pipe(gulp.dest(PATH_DIST + '/css'))
