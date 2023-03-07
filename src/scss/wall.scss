@@ -1,5 +1,5 @@
 @mixin aspect-ratio-container($width:1, $height:1) {
-    $ratio-amount: ($height / $width);
+    $ratio-amount: calc($height / $width);
     $padding-top: percentage($ratio-amount);
     display: block;
     width: 100%;
@@ -51,7 +51,7 @@ $wall-breakpoints: (
     @for $i from 1 through $wall-columns {
         & > .wall--#{$breakpoint-prefix}cols-#{$i} {
             & > .wall-col {
-                width: (100% / $i);
+                width: calc(100% / $i);
             }
         }
     }
@@ -61,7 +61,7 @@ $wall-breakpoints: (
     @each $i in $wall-ratio {
         & > .wall--#{$breakpoint-prefix}ratio-#{nth($i, 1)}-#{nth($i, 2)} {
             & > .wall-col > .wall-item {
-                $ratio-amount: (nth($i, 2) / nth($i, 1));
+                $ratio-amount: calc(nth($i, 2) / nth($i, 1));
                 padding-top: percentage($ratio-amount);
             }
         }
