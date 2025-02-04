@@ -1,6 +1,6 @@
 {
   "name": "@fabiocaccamo/wall.css",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "Pure (s)css block-grid implementation with extra features.",
   "keywords": [
     "html",
@@ -14,7 +14,6 @@
     "spacing",
     "custom",
     "bootstrap",
-    "foundation",
     "wall"
   ],
   "license": "MIT",
