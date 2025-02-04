@@ -143,11 +143,11 @@ $wall-breakpoints: (
         overflow-x: hidden;
         overflow-y: auto;
         & > .wall {
+            margin-bottom: 0;
             overflow: hidden;
             & > .wall-col {
                 white-space: initial;
             }
-            margin-bottom: 0;
         }
     }
 }
