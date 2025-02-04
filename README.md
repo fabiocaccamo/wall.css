@@ -14,7 +14,7 @@ Pure (s)css **block-grid** implementation with extra features. 🧱
 `npm install @fabiocaccamo/wall.css`
 
 ### CDN
-`https://cdn.jsdelivr.net/npm/@fabiocaccamo/wall.css@latest/dist/css/wall.css`
+`https://cdn.jsdelivr.net/npm/@fabiocaccamo/wall.css@latest/dist/css/wall.min.css`
 
 ## Usage
 
