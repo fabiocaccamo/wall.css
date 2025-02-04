@@ -1,6 +1,8 @@
+@use "sass:list";
+@use "sass:math";
 @mixin aspect-ratio-container($width:1, $height:1) {
     $ratio-amount: calc($height / $width);
-    $padding-top: percentage($ratio-amount);
+    $padding-top: math.percentage($ratio-amount);
     display: block;
     width: 100%;
     height: 0;
@@ -59,10 +61,10 @@ $wall-breakpoints: (
 
 @mixin _wall-ratio($breakpoint-prefix:"") {
     @each $i in $wall-ratio {
-        & > .wall--#{$breakpoint-prefix}ratio-#{nth($i, 1)}-#{nth($i, 2)} {
+        & > .wall--#{$breakpoint-prefix}ratio-#{list.nth($i, 1)}-#{list.nth($i, 2)} {
             & > .wall-col > .wall-item {
-                $ratio-amount: calc(nth($i, 2) / nth($i, 1));
-                padding-top: percentage($ratio-amount);
+                $ratio-amount: calc(list.nth($i, 2) / list.nth($i, 1));
+                padding-top: math.percentage($ratio-amount);
             }
         }
     }
