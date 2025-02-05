@@ -4,5 +4,4 @@ npm-debug.log
 bower_components
 *.swp
 package-lock.json
-*html
-*demo*
+TODO.txt
