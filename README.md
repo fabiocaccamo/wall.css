@@ -1,5 +1,5 @@
 # wall.css
-Pure (s)css **block-grid** implementation with extra features. 🧱
+Pure (s)css responsive **block-grid** with extra features. 🧱
 
 ## Features
 
@@ -20,23 +20,19 @@ Pure (s)css **block-grid** implementation with extra features. 🧱
 
 ### HTML
 ```html
-<div class="wall-container wall-container--horizontal wall-container--lg-vertical">
-    <div class="wall wall--cols-5 wall--ratio-3-2 wall--rounded-5 wall--spacing-5">
-        <div class="wall-col">
-            <div class="wall-item">
-                <a class="wall-item-content" href="#">
-                    <img src="https://via.placeholder.com/500x500" />
-                </a>
-            </div>
-        </div>
-        <div class="wall-col">
-            <!-- ... -->
-        </div>
-        <div class="wall-col">
-            <!-- ... -->
-        </div>
+<div class="wall wall--cols-5 wall--ratio-3-2 wall--rounded-5 wall--spacing-5">
+    <div class="wall-col">
+        <a href="#">
+            <img src="https://via.placeholder.com/500x500" />
+        </a>
+    </div>
+    <div class="wall-col">
         <!-- ... -->
     </div>
+    <div class="wall-col">
+        <!-- ... -->
+    </div>
+    <!-- ... -->
 </div>
 ```
 
@@ -49,36 +45,52 @@ Pure (s)css **block-grid** implementation with extra features. 🧱
 - `md` > `768px`
 - `lg` > `992px`
 - `xl` > `1200px`
+- `xxl` > `1400px`
 
 #### Classes & Modifiers
 
-- `.wall-container` `.wall-container--{breakpoint}-horizontal`
+##### Columns
 
-Set the wall direction to horizontal, if the number of columns exceeds the values set, horizontal scroll will be used.
+`.wall` `.wall--{breakpoint}-cols-{n}`
 
-- `.wall-container` `.wall-container--{breakpoint}-vertical`
+Set the number of columns to display, `{n}` supported values are from `1` to `12`, default `12`.
 
-Set the wall direction to vertical (default behavior).
+##### Spacing
 
-- `.wall` `.wall--{breakpoint}-cols-{n}`
+`.wall` `.wall--{breakpoint}-spacing-{n}`
 
-Set the number of columns to display, `{n}` supported values are from `1` to `24`, default `1`.
+`.wall` `.wall--{breakpoint}-spacing-x-{n}`
 
-- `.wall` `.wall--{breakpoint}-ratio-{n-n}`
+`.wall` `.wall--{breakpoint}-spacing-y-{n}`
 
-Set the aspect-ratio of the items, `{n}` supported values are: `1-1`, `2-1`, `1-2`, `3-1`, `1-3`, `3-2`, `2-3`, `4-3`, `3-4`, `16-9`, default `1-1`.
+Set the spacing between the items, `{n}` supported values are: `0`, `1`, `2`, `3`, `4`, `5`, `8`, `10`, `12`, `15`, `16`, `20`, `24`, `25`, `30`, `32`, default `10`.
 
-- `.wall` `.wall--{breakpoint}-rounded-{n}`
+##### Ratio
+
+`.wall` `.wall--{breakpoint}-ratio-{n-n}`
+
+Set the aspect-ratio of the items, `{n-n}` supported values are: `1-1`, `2-1`, `3-1`, `3-2`, `4-3`, `16-9`, default `1-1`.
+
+##### Rounded
+
+`.wall` `.wall--{breakpoint}-rounded-{n}`
 
 Set the border-radius of the items, `{n}` supported values are: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `15`, `20`, `30`, default `0`.
 
-- `.wall` `.wall--{breakpoint}-rounded`
+`.wall` `.wall--{breakpoint}-rounded`
 
 Set the border-radius of the items to `100%`, it can be used together with `.wall--ratio-1-1` to make circle items.
 
-- `.wall` `.wall--{breakpoint}-spacing-{n}`
+#### CSS Variables
 
-Set the spacing between the items, `{n}` supported values are: `0`, `1`, `2`, `3`, `4`, `5`, `10`, `15`, `20`, `25`, `30`, `40`, `50`, `60`, default `0`.
+The modifiers above operate on the following css variables, that is possible to override:
+
+`--columns: 12;`
+`--spacing: 10px;`
+`--spacing-x: unset;`
+`--spacing-y: unset;`
+`--rounded: 0px;`
+`--ratio: 1 / 1;`
 
 ### SASS
 
@@ -87,31 +99,23 @@ Set the spacing between the items, `{n}` supported values are: `0`, `1`, `2`, `3
 @import "wall";
 ```
 
-#### Variables
+#### SASS Variables
 ```scss
-$wall-columns: 24 !default;
-$wall-ratio: ((1, 1), (2, 1), (1, 2), (3, 1), (1, 3), (3, 2), (2, 3), (4, 3), (3, 4), (16, 9)) !default;
-$wall-rounded: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 30 !default;
-$wall-spacing: 0, 1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50, 60 !default;
+$wall-columns: 12 !default;
+$wall-spacing: 0, 1, 2, 3, 4, 5, 8, 10, 12, 15, 16, 20, 24, 25, 30, 32 !default;
+$wall-ratio: ((1, 1), (2, 1), (3, 1), (3, 2), (4, 3), (16, 9)) !default;
+$wall-rounded: 0, 2, 3, 4, 5, 8, 10, 12, 15, 16, 20, 24, 25, 30, 32 !default;
 $wall-breakpoints: (
     xs: 0,
     sm: 576px,
     md: 768px,
     lg: 992px,
-    xl: 1200px
+    xl: 1200px,
+    xxl: 1400px
 ) !default;
-```
-
-#### Mixins
-```scss
-/* set proportional width/height (fixed aspect ratio, eg. 1:1, 3:2, 4:3, ...) */
-@include aspect-ratio-container($width:1, $height:1);
-
-/* fill 100% width and height of the parent "aspect-ratio-container" */
-@include aspect-ratio-content();
 ```
 
 ---
 
 ## License
-Released under [MIT License](LICENSE.txt).
+Released under [MIT License](LICENSE).
