@@ -1,216 +1,106 @@
 @use "sass:list";
-@use "sass:math";
-@mixin aspect-ratio-container($width:1, $height:1) {
-    $ratio-amount: calc($height / $width);
-    $padding-top: math.percentage($ratio-amount);
-    display: block;
-    width: 100%;
-    height: 0;
-    padding-top: $padding-top;
-    overflow: hidden;
-    position: relative;
-}
 
-@mixin aspect-ratio-content() {
-    display: block;
-    width: 100%;
-    height: calc(100% + 1px);
-    box-sizing: border-box;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 0;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    & img {
-        object-fit: cover;
-    }
-    & > img {
-        object-fit: cover;
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-}
-
-$wall-columns: 24 !default;
-$wall-ratio: ((1, 1), (2, 1), (1, 2), (3, 1), (1, 3), (3, 2), (2, 3), (4, 3), (3, 4), (16, 9)) !default;
-$wall-rounded: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 30 !default;
-$wall-spacing: 0, 1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50, 60 !default;
+$wall-columns: 12 !default;
+$wall-spacing: 0, 1, 2, 3, 4, 5, 8, 10, 12, 15, 16, 20, 24, 25, 30, 32 !default;
+$wall-ratio: ((1, 1), (2, 1), (3, 1), (3, 2), (4, 3), (16, 9)) !default;
+$wall-rounded: 0, 2, 3, 4, 5, 8, 10, 12, 15, 16, 20, 24, 25, 30, 32 !default;
 $wall-breakpoints: (
     xs: 0,
     sm: 576px,
     md: 768px,
     lg: 992px,
-    xl: 1200px
+    xl: 1200px,
+    xxl: 1400px
 ) !default;
 
 @mixin _wall-columns($breakpoint-prefix:"") {
     @for $i from 1 through $wall-columns {
-        & > .wall--#{$breakpoint-prefix}cols-#{$i} {
-            & > .wall-col {
-                width: calc(100% / $i);
-            }
-        }
-    }
-}
-
-@mixin _wall-ratio($breakpoint-prefix:"") {
-    @each $i in $wall-ratio {
-        & > .wall--#{$breakpoint-prefix}ratio-#{list.nth($i, 1)}-#{list.nth($i, 2)} {
-            & > .wall-col > .wall-item {
-                $ratio-amount: calc(list.nth($i, 2) / list.nth($i, 1));
-                padding-top: math.percentage($ratio-amount);
-            }
-        }
-    }
-}
-
-@mixin _wall-rounded($breakpoint-prefix:"") {
-    @each $i in $wall-rounded {
-        & > .wall--#{$breakpoint-prefix}rounded-#{$i} {
-            & > .wall-col > .wall-item,
-            & > .wall-col > .wall-item > .wall-item-content {
-                border-radius: #{$i}px;
-            }
-        }
-    }
-    & > .wall--#{$breakpoint-prefix}rounded {
-        & > .wall-col > .wall-item,
-        & > .wall-col > .wall-item > .wall-item-content {
-            border-radius: 100%;
-        }
-    }
-}
-
-@mixin _wall-hspacing($breakpoint-prefix:"") {
-    @each $i in $wall-spacing {
-        & > .wall--#{$breakpoint-prefix}hspacing-#{$i} {
-            margin-left: #{-$i}px;
-            & > .wall-col {
-                padding-left: #{$i}px;
-            }
-        }
-    }
-}
-
-@mixin _wall-vspacing($breakpoint-prefix:"") {
-    @each $i in $wall-spacing {
-        & > .wall--#{$breakpoint-prefix}vspacing-#{$i} {
-            margin-top: #{-$i}px;
-            & > .wall-col {
-                padding-top: #{$i}px;
-            }
+        &.wall--#{$breakpoint-prefix}cols-#{$i} {
+            --columns: #{$i};
         }
     }
 }
 
 @mixin _wall-spacing($breakpoint-prefix:"") {
     @each $i in $wall-spacing {
-        & > .wall--#{$breakpoint-prefix}spacing-#{$i} {
-            margin-top: #{-$i}px;
-            margin-left: #{-$i}px;
-            & > .wall-col {
-                padding-top: #{$i}px;
-                padding-left: #{$i}px;
-            }
+        &.wall--#{$breakpoint-prefix}spacing-#{$i} {
+            --spacing: #{$i}px;
+        }
+        &.wall--#{$breakpoint-prefix}spacing-x-#{$i} {
+            --spacing-x: #{$i}px;
+        }
+        &.wall--#{$breakpoint-prefix}spacing-y-#{$i} {
+            --spacing-y: #{$i}px;
         }
     }
 }
 
-@mixin _wall-direction($breakpoint-prefix:"") {
-    &--#{$breakpoint-prefix}horizontal {
-        white-space: nowrap;
-        overflow-x: auto;
-        overflow-y: hidden;
-        & > .wall {
-            overflow: initial;
-            & > .wall-col {
-                white-space: initial;
-            }
-        }
-        @each $i in $wall-spacing {
-            & > .wall--#{$breakpoint-prefix}spacing-#{$i},
-            & > .wall--#{$breakpoint-prefix}vspacing-#{$i} {
-                margin-bottom: #{$i}px;
-            }
-        }
-    }
-    &--#{$breakpoint-prefix}vertical {
-        white-space: initial;
-        overflow-x: hidden;
-        overflow-y: auto;
-        & > .wall {
-            margin-bottom: 0;
-            overflow: hidden;
-            & > .wall-col {
-                white-space: initial;
-            }
+@mixin _wall-ratio($breakpoint-prefix:"") {
+    @each $i in $wall-ratio {
+        &.wall--#{$breakpoint-prefix}ratio-#{list.nth($i, 1)}-#{list.nth($i, 2)} {
+            --ratio: #{list.nth($i, 1)} / #{list.nth($i, 2)};
         }
     }
 }
 
-.wall-container,
-.wall-container .wall,
-.wall-container .wall-col,
-.wall-container .wall-item,
-.wall-container .wall-item-content {
+@mixin _wall-rounded($breakpoint-prefix:"") {
+    @each $i in $wall-rounded {
+        &.wall--#{$breakpoint-prefix}rounded-#{$i} {
+            --rounded: #{$i}px;
+        }
+    }
+    &.wall--#{$breakpoint-prefix}rounded {
+        --rounded: 100%;
+    }
+}
+
+.wall {
+    --columns: 12;
+    --spacing: 10px;
+    --spacing-x: unset;
+    --spacing-y: unset;
+    --rounded: 0px;
+    --ratio: 1 / 1;
+
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    column-gap: var(--spacing-x, var(--spacing));
+    row-gap: var(--spacing-y, var(--spacing));
+    width: 100%;
+    height: auto;
+    list-style: none;
     margin: 0;
     padding: 0;
     border: none;
     box-sizing: border-box;
     outline: none;
-}
 
-.wall-container {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    width: 100%;
-
-    & > .wall {
-        display: block;
+    & > .wall-col {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
         overflow: hidden;
-        list-style: none;
-        font-size: 0;
-
-        & > .wall-col {
-            display: inline-block;
-            vertical-align: top;
-            width: 100%;
-            font-size: 1rem;
-            overflow: hidden;
-            & > .wall-item {
-                @include aspect-ratio-container();
-                & > .wall-item-content {
-                    @include aspect-ratio-content();
-                }
-            }
-        }
+        border-radius: var(--rounded);
+        aspect-ratio: var(--ratio);
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-sizing: border-box;
+        outline: none;
     }
 
     @include _wall-columns();
+    @include _wall-spacing();
     @include _wall-ratio();
     @include _wall-rounded();
-    @include _wall-hspacing();
-    @include _wall-vspacing();
-    @include _wall-spacing();
-    @include _wall-direction();
 
     @each $breakpoint, $breakpoint-min-width in $wall-breakpoints {
         @media screen and (min-width: $breakpoint-min-width) {
             $breakpoint-prefix: #{$breakpoint}-;
             @include _wall-columns($breakpoint-prefix);
+            @include _wall-spacing($breakpoint-prefix);
             @include _wall-ratio($breakpoint-prefix);
             @include _wall-rounded($breakpoint-prefix);
-            @include _wall-hspacing($breakpoint-prefix);
-            @include _wall-vspacing($breakpoint-prefix);
-            @include _wall-spacing($breakpoint-prefix);
-            @include _wall-direction($breakpoint-prefix);
         }
     }
 }
