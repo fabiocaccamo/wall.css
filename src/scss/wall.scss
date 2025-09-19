@@ -1,9 +1,9 @@
 @use "sass:list";
 
 $wall-columns: 12 !default;
-$wall-spacing: 0, 1, 2, 3, 4, 5, 8, 10, 12, 15, 16, 20, 24, 25, 30, 32 !default;
-$wall-ratio: ((1, 1), (2, 1), (3, 1), (3, 2), (4, 3), (16, 9)) !default;
-$wall-rounded: 0, 2, 3, 4, 5, 8, 10, 12, 15, 16, 20, 24, 25, 30, 32 !default;
+$wall-spacing: 0, 1, 2, 3, 4, 5, 8, 10, 12, 15, 16, 20, 24, 25, 30, 32, 40, 50, 60, 70, 80, 90, 100 !default;
+$wall-ratio: ((1, 1), (2, 1), (1, 2), (3, 1), (1, 3), (3, 2), (2, 3), (4, 3), (3, 4), (16, 9)) !default;
+$wall-rounded: 0, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 24, 30 !default;
 $wall-breakpoints: (
     xs: 0,
     sm: 576px,

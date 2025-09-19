@@ -63,19 +63,19 @@ Set the number of columns to display, `{n}` supported values are from `1` to `12
 
 `.wall` `.wall--{breakpoint}-spacing-y-{n}`
 
-Set the spacing between the items, `{n}` supported values are: `0`, `1`, `2`, `3`, `4`, `5`, `8`, `10`, `12`, `15`, `16`, `20`, `24`, `25`, `30`, `32`, default `10`.
+Set the spacing between the items, `{n}` supported values are: `0, 1, 2, 3, 4, 5, 8, 10, 12, 15, 16, 20, 24, 25, 30, 32, 40, 50, 60, 70, 80, 90, 100`, default `0`.
 
 ##### Ratio
 
 `.wall` `.wall--{breakpoint}-ratio-{n-n}`
 
-Set the aspect-ratio of the items, `{n-n}` supported values are: `1-1`, `2-1`, `3-1`, `3-2`, `4-3`, `16-9`, default `1-1`.
+Set the aspect-ratio of the items, `{n-n}` supported values are: `1/1, 2/1, 1/2, 3/1, 1/3, 3/2, 2/3, 4/3, 3/4, 16/9`, default `unset`.
 
 ##### Rounded
 
 `.wall` `.wall--{breakpoint}-rounded-{n}`
 
-Set the border-radius of the items, `{n}` supported values are: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `15`, `20`, `30`, default `0`.
+Set the border-radius of the items, `{n}` supported values are: `0, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 24, 30`, default `0`.
 
 `.wall` `.wall--{breakpoint}-rounded`
 
