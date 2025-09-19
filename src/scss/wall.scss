@@ -56,11 +56,11 @@ $wall-breakpoints: (
 
 .wall {
     --columns: 12;
-    --spacing: 10px;
+    --spacing: 0px;
     --spacing-x: unset;
     --spacing-y: unset;
     --rounded: 0px;
-    --ratio: 1 / 1;
+    --ratio: unset;
 
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);
@@ -79,7 +79,6 @@ $wall-breakpoints: (
         width: 100%;
         max-width: 100%;
         height: auto;
-        overflow: hidden;
         border-radius: var(--rounded);
         aspect-ratio: var(--ratio);
         margin: 0;
