@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>@fabiocaccamo/wall.css</title>
+        <title>@fabiocaccamo/wall.css - pure (s)css responsive block-grid with extra features.</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="pure (s)css block-grid implementation with extra features.">
+        <meta name="description" content="pure (s)css responsive block-grid with extra features.">
         <meta name="keywords" content="scss, css, grid, wall, bricks, spacing, aspect-ratio, responsive, bootstrap">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fabiocaccamo/wall.css@0.4.0/dist/css/wall.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fabiocaccamo/wall.css@1.0.0/dist/css/wall.min.css">
+        <!-- <link rel="stylesheet" href="../dist/css/wall.min.css"> -->
         <style type="text/css">
             .app {
                 display: flex;
@@ -49,6 +50,17 @@
             label span {
                 font-weight: bold;
             }
+            .custom-element {
+                display: flex;
+                width: 100%;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                border-radius: var(--radius);
+            }
+            .custom-element img {
+                width: 100%;
+            }
         </style>
     </head>
     <body>
@@ -56,43 +68,22 @@
             <sidebar class="p-4 pb-5">
                 <header class="mb-5">
                     <h1 class="h4 fw-semibold"><a class="text-reset" href="https://github.com/fabiocaccamo/wall.css">@fabiocaccamo/wall.css</a></h1>
-                    <p class="fs-6">🧱 pure (s)css block-grid implementation with extra features.</h2>
+                    <p class="fs-6">🧱 pure (s)css responsive block-grid with extra features.</h2>
                 </header>
-                <!--
-                <div class="control">
-                    <label>Items: <span class="font-monospace" v-text="items_selected"></span></label>
-                    <input type="range" class="form-range" step="1" min="1" max="1000" v-model="items_selected">
-                </div>
-                -->
-                <!--
-                <div class="control">
-                    <label>Padding: <span class="font-monospace" v-text="padding_selected + 'px'"></span></label>
-                    <input type="range" class="form-range" step="1" min="0" max="100" v-model="padding_selected">
-                </div>
-                -->
-                <!--
-                <div class="control">
-                    <label>Breakpoint: <span class="font-monospace" v-text="breakpoints_selected"></span></label>
-                    <div v-for="breakpoints_value in breakpoints_values" class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="breakpoint" :id="'breakpoint-' + breakpoints_value" :value="breakpoints_value" v-model="breakpoints_selected">
-                        <label class="form-check-label" :for="'breakpoint-' + breakpoints_value" v-text="breakpoints_value"></label>
-                    </div>
-                </div>
-                -->
                 <div class="control">
                     <label>Columns: <span class="font-monospace" v-text="cols_selected"></span></label>
-                    <input type="range" class="form-range form-range-sm" step="1" min="1" max="24" v-model="cols_selected">
-                </div>
-                <div class="control">
-                    <label>Ratio: <span class="font-monospace" v-text="ratio_selected"></span></label>
-                    <select class="form-select form-select-sm" aria-label="Ratio" v-model="ratio_selected">
-                        <option v-for="ratio_value in ratio_values" :value="ratio_value" v-text="ratio_value"></option>
-                    </select>
+                    <input type="range" class="form-range form-range-sm" step="1" min="1" max="12" v-model="cols_selected">
                 </div>
                 <div class="control">
                     <label>Spacing: <span class="font-monospace" v-text="spacing_selected + 'px'"></span></label>
                     <select class="form-select form-select-sm" aria-label="Spacing" v-model="spacing_selected">
                         <option v-for="spacing_value in spacing_values" :value="spacing_value" v-text="spacing_value"></option>
+                    </select>
+                </div>
+                <div class="control">
+                    <label>Ratio: <span class="font-monospace" v-text="ratio_selected"></span></label>
+                    <select class="form-select form-select-sm" aria-label="Ratio" v-model="ratio_selected">
+                        <option v-for="ratio_value in ratio_values" :value="ratio_value" v-text="ratio_value"></option>
                     </select>
                 </div>
                 <div class="control">
@@ -102,17 +93,13 @@
                     </select>
                 </div>
             </sidebar>
-            <div class="wall-container wall-container--vertical">
-                <section class="wall" :class="wall_modifiers" :style="{ 'padding': padding_selected + 'px' }">
-                    <div class="wall-col" v-for="i in Number(items_selected)">
-                        <div class="wall-item">
-                            <a class="wall-item-content" href="#">
-                                <img src="https://placehold.co/400x400" loading="lazy" />
-                            </a>
-                        </div>
-                    </div>
-                </section>
-            </div>
+            <ul class="wall p-4" :class="wall_modifiers">
+                <li class="wall-col" v-for="i in Number(items_selected)">
+                    <a class="custom-element" href="#">
+                        <img src="https://placehold.co/400x400" loading="lazy" />
+                    </a>
+                </li>
+            </ul>
         </div>
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@fabiocaccamo/utils.js@1.1.0/dist/utils.min.js"></script>
@@ -123,22 +110,21 @@
                         ready: false,
                         breakpoints_values: ['xs', 'sm', 'md', 'lg', 'xl'],
                         breakpoints_selected: 'xs',
-                        padding_selected: 24,
                         items_selected: 240,
                         cols_selected: 6,
-                        ratio_values: ['1-1', '2-1', '1-2', '3-1', '1-3', '3-2', '2-3', '4-3', '3-4', '16-9'],
-                        ratio_selected: '1-1',
-                        spacing_values: [0, 1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50, 60],
-                        spacing_selected: 5,
-                        rounded_values: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 30],
-                        rounded_selected: 6,
+                        ratio_values: ['1/1', '2/1', '3/1', '3/2', '4/3', '16/9'],
+                        ratio_selected: '1/1',
+                        spacing_values: [0, 1, 2, 3, 4, 5, 8, 10, 12, 15, 16, 20, 24, 25, 30, 32],
+                        spacing_selected: 8,
+                        rounded_values: [0, 2, 3, 4, 5, 8, 10, 12, 15, 16, 20, 24, 25, 30, 32],
+                        rounded_selected: 8,
                     };
                 },
                 computed: {
                     wall_modifiers() {
                         return `
                             wall--cols-${this.cols_selected}
-                            wall--ratio-${this.ratio_selected}
+                            wall--ratio-${this.ratio_selected.replace("/", "-")}
                             wall--spacing-${this.spacing_selected}
                             wall--rounded-${this.rounded_selected}
                         `;
