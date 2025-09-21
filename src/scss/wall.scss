@@ -88,6 +88,11 @@ $wall-breakpoints: (
         outline: none;
     }
 
+    &.wall-rounded > .wall-col,
+    &[class*="wall-rounded-"] > .wall-col {
+        overflow: hidden;
+    }
+
     @include _wall-columns();
     @include _wall-spacing();
     @include _wall-ratio();
