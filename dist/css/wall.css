@@ -30,9 +30,7 @@
   box-sizing: border-box;
   outline: none;
 }
-.wall > .wall-col > * {
-  max-width: 100%;
-  max-height: 100%;
+.wall.wall--rounded > .wall-col, .wall[class*=wall--rounded-] > .wall-col, .wall[class*=wall--ratio-] > .wall-col {
   overflow: hidden;
 }
 .wall.wall--cols-1 {
