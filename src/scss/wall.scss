@@ -63,7 +63,7 @@ $wall-breakpoints: (
     --ratio: unset;
 
     display: grid;
-    grid-template-columns: repeat(var(--columns), 1fr);
+    grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
     column-gap: var(--spacing-x, var(--spacing));
     row-gap: var(--spacing-y, var(--spacing));
     width: 100%;
